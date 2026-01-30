@@ -5,7 +5,7 @@ public class Transactions {
     private int transactionId;
     private int accountId;
     private double amount;
-    private String transactionType;
+    private String transactionType; // DEPOSIT , WITHDRAWAL
     private Date transactionDate;
     public Transactions(){}
     

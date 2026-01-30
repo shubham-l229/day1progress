@@ -6,7 +6,7 @@ public class Customers {
     private String email;
     private String username;
     private String password;
-    private String role;
+    private String role; // USER, ADMIN
     public Customers(){}
     public Customers(int customerId, String name, String email, String username, String password, String role) {
         this.customerId = customerId;
