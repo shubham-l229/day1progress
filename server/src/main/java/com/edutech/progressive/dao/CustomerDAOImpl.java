@@ -25,8 +25,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     public CustomerAccountInfo getCustomerAccountInfo(int customerId){
         return null;
     }
-    @Override
-    public List<Customers> getAllCustomers() {
-       return null;
-    }
+    // @Override
+    // public List<Customers> getAllCustomers() {
+    //    return null;
+    // }
 }

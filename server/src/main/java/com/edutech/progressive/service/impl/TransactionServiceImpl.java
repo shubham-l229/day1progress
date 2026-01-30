@@ -4,8 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.edutech.progressive.entity.Transactions;
+import com.edutech.progressive.service.TransactionService;
 
-public class TransactionServiceImpl {
+public class TransactionServiceImpl implements TransactionService{
     public List<Transactions> getAllTransactions() throws SQLException{
         return null;
     }

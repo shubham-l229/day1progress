@@ -6,8 +6,9 @@ import java.util.List;
 
 import com.edutech.progressive.dao.AccountDAO;
 import com.edutech.progressive.entity.Accounts;
+import com.edutech.progressive.service.AccountService;
 
-public class AccountServiceImpl  {
+public class AccountServiceImpl implements AccountService {
     private AccountDAO accountDAO;
 
     // public AccountServiceImpl(AccountDAOImpl accountDAO){
@@ -28,7 +29,7 @@ public class AccountServiceImpl  {
     public List<Accounts> getAccountsByUser(int userId)throws SQLException{
         return null;
     }
-    public Accounts geAccountById(int accountId)throws SQLException{
+    public Accounts getAccountById(int accountId)throws SQLException{
         return null;
     }
     public void updateAccount(Accounts accounts)throws SQLException{

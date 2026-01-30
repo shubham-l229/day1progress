@@ -6,8 +6,9 @@ import java.util.List;
 
 import com.edutech.progressive.dao.CustomerDAO;
 import com.edutech.progressive.entity.Customers;
+import com.edutech.progressive.service.CustomerService;
 
-public class CustomerServiceImpl {
+public class CustomerServiceImpl implements CustomerService{
         private CustomerDAO customerDAO;
 
         public CustomerServiceImpl(CustomerDAO customerDAO) {
