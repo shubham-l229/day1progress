@@ -1,28 +1,56 @@
 package com.edutech.progressive.service.impl;
-
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.edutech.progressive.dao.TransactionDAO;
 import com.edutech.progressive.entity.Transactions;
+// import com.edutech.progressive.service.TransactionService;
 import com.edutech.progressive.service.TransactionService;
 
-public class TransactionServiceImpl implements TransactionService{
-    public List<Transactions> getAllTransactions() throws SQLException{
-        return null;
-    }
-    public Transactions getTransactionById(int transactionId)throws SQLException{
-        return null;
-    }
-    public int addTransaction(Transactions transaction) throws SQLException{
-        return -1;
-    }
-    public void updateTransaction(Transactions transaction) throws SQLException{
+public class TransactionServiceImpl implements TransactionService {
+    private TransactionDAO transactionDAO;
 
+    public TransactionServiceImpl(TransactionDAO transactionDAO){
+        this.transactionDAO = transactionDAO;
     }
-    public void deleteTransaction(int transactionId) throws SQLException{
 
+    @Override
+    public List<Transactions> getAllTransactions() throws SQLException {
+        // TODO Auto-generated method setDoubl
+        return transactionDAO.getAllTransactions();
     }
-    public List<Transactions> getTransactionsByCustomerId(int customerId) throws SQLException{
-        return null;
+
+    @Override
+    public Transactions getTransactionById(int transactionId) throws SQLException {
+        // TODO Auto-generated method setDoubl
+        return transactionDAO.getTransactionById(transactionId);
     }
+
+    @Override
+    public int addTransaction(Transactions transaction) throws SQLException {
+        // TODO Auto-generated method setDoubl
+           return transactionDAO.addTransaction(transaction);
+    }
+
+    @Override
+    public void updateTransaction(Transactions transaction) throws SQLException {
+        // TODO Auto-generated method setDoubl
+        transactionDAO.updateTransaction(transaction);
+    }
+
+    @Override
+    public void deleteTransaction(int transactionId) throws SQLException {
+        // TODO Auto-generated method setDoubl
+        transactionDAO.deleteTransaction(transactionId);
+    }
+
+    @Override
+    public List<Transactions> getTransactionsByCustomerId(int customerId) throws SQLException {
+        // TODO Auto-generated method setDoubl
+        List<Transactions> list = new ArrayList<>();
+    //    return transactionDAO.getTransactionsById(customerId);
+                  return list;
+    }
+    
 }
