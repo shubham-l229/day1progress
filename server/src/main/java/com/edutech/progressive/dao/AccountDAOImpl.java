@@ -90,6 +90,13 @@ public class AccountDAOImpl implements AccountDAO{
             return list;
         
     }
+
+
+    @Override
+    public List<Accounts> getAllAccountsByCustomer(int customer_id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllAccountsByCustomer'");
+    }
     
 }
 
