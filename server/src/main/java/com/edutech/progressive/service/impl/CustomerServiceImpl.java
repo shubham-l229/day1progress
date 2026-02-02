@@ -5,36 +5,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.edutech.progressive.dao.CustomerDAO;
+import com.edutech.progressive.dao.CustomerDAOImpl;
 import com.edutech.progressive.entity.Customers;
 import com.edutech.progressive.service.CustomerService;
 
-public class CustomerServiceImpl implements CustomerService{
-        private CustomerDAO customerDAO;
+public class CustomerServiceImpl implements CustomerService  {
 
-        public CustomerServiceImpl(CustomerDAO customerDAO) {
-            this.customerDAO = customerDAO;
-        }
+    private CustomerDAO customerDAO;
+    
+    public CustomerServiceImpl(CustomerDAOImpl customerDAO){
+         this.customerDAO = customerDAO;
+    }
 
-        // public CustomerServiceImpl(CustomerDAOImpl customerDAO){
-        //     this.customerDAO = customerDAO;
-        // }
-        public List<Customers> getAllCustomers() throws SQLException{
-            return new ArrayList<>();
-        }
-        public int addCustomer(Customers customers) throws SQLException{
-            return -1;
-        }
-        public List<Customers> getAllCustomersSortedByName()throws SQLException{
-            return new ArrayList<>();
-        }
-        public void updateCustomer(Customers customers) throws SQLException{
+    @Override
+    public List<Customers> getAllCustomers() throws SQLException {
+        // TODO Auto-generated method stub
+        // List<Customers> list = new ArrayList<>();
+        // return list;
+        return customerDAO.getAllCustomers();
+    }
 
-        }
-        public void deleteCustomer(int customerId)throws SQLException{
+    @Override
+    public int addCustomer(Customers customers) throws SQLException {
+        // TODO Auto-generated method stub
+        // return -1;
+        // return customerDAO.addCustomer(customers);
+        int generatedId = customerDAO.addCustomer(customers);
+        customers.setCustomerId(generatedId);
+        return generatedId;
+    }
 
-        }
-        public Customers getCustomerById(int customerId) throws SQLException{
-            return null;
-        }
-        
+    @Override
+    public List<Customers> getAllCustomersSortedByName() throws SQLException {
+        // TODO Auto-generated method stub
+        // List<Customers> list = new ArrayList<>();
+        // return list;
+        List<Customers> list = customerDAO.getAllCustomers();
+        list.sort((a,b) -> a.getName().compareToIgnoreCase(b.getName()));
+        return list;
+     }
+
+    public void updateCustomer(Customers customers) throws SQLException{
+            customerDAO.updateCustomer(customers);
+    }
+    public void deleteCustomer(int customerId)throws SQLException{
+           customerDAO.deleteCustomer(customerId);
+    }
+    public Customers getCustomerById(int customerId) throws SQLException{
+          return customerDAO.getCustomerById(customerId);
+    }
+
 }
