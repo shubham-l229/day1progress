@@ -3,41 +3,44 @@ package com.edutech.progressive.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.edutech.progressive.dao.AccountDAO;
 import com.edutech.progressive.entity.Accounts;
-
+import com.edutech.progressive.repository.AccountRepository;
+@Service
 public class AccountServiceImplJpa {
+    // @Autowired
+    private AccountRepository accRepo;
 
-    private AccountDAO accountDAO;
-
-    public AccountServiceImplJpa(AccountDAO accountDAO) {
-        this.accountDAO = accountDAO;
+    public AccountServiceImplJpa(AccountRepository accRepo) {
+        this.accRepo = accRepo;
     }
 
-    public List<Accounts> getAllAccounts() throws SQLException {
-        return accountDAO.getAllAccounts();
+    public List<Accounts> getAllAccounts(){
+        return accRepo.findAll();
     }
 
-    public Accounts getAccountById(int accountId) throws SQLException {
-        return accountDAO.getAccountById(accountId);
+    public int addAccount(Accounts accounts){
+        return accRepo.save(accounts).getAccountId();
     }
 
-    public int addAccount(Accounts accounts) throws SQLException {
-        return accountDAO.addAccount(accounts);
+    public void updateAccount(Accounts accounts){
+        accRepo.save(accounts);
     }
 
-    public void updateAccount(Accounts accounts) throws SQLException {
-        accountDAO.updateAccount(accounts);
+    public void deleteAccount(int accountId){
+        accRepo.deleteById(accountId);
     }
 
-    public void deleteAccount(int accountId) throws SQLException {
-        accountDAO.deleteAccount(accountId);
-    }
-
-    public List<Accounts> getAllAccountsSortedByBalance() throws SQLException {
-        List<Accounts> list = accountDAO.getAllAccounts();
-        list.sort((a, b) ->
-                Double.compare(a.getBalance(), b.getBalance()));
+    public List<Accounts> getAllAccountsSortedByBalance(){
+        List<Accounts> list = accRepo.findAll();
+        list.sort(Accounts::compareTo);
         return list;
     }
+
+   
+
+    
 }
